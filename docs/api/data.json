@@ -207,6 +207,61 @@
             "loop": false
           },
           "id": 1618924423273499
+        },
+        {
+          "type": {
+            "id": 1,
+            "name": "nav"
+          },
+          "title": "LINK UTILI",
+          "abstract": "Un esempio pratico di multilink",
+          "viewId": 170427763402500,
+          "hook": null,
+          "hookExtra": null,
+          "keepOrientation": false,
+          "important": false,
+          "transparent": false,
+          "position": [
+            -98.80422377685561,
+            -15.376727543989974,
+            1.1320838709833625
+          ],
+          "rotation": [
+            -1.644286934888919,
+            1.415995358691197,
+            1.6451730965476279,
+            "XYZ"
+          ],
+          "scale": [
+            20,
+            5,
+            1
+          ],
+          "asset": null,
+          "link": null,
+          "id": 670692347114500,
+          "links": [
+            {
+              "title": "SITO WEB",
+              "href": "https://www.more.mr/it/",
+              "target": "_blank"
+            },
+            {
+              "title": "PDF B.HERE",
+              "href": "https://design.wslabs.it/vr/b-here.pdf",
+              "target": "_blank"
+            },
+            {
+              "title": "PROGETTI",
+              "href": "https://design.wslabs.it/vr/app/index.html",
+              "target": "_blank"
+            },
+            {
+              "title": "3D VIEWER",
+              "href": "https://design.wslabs.it/vr/3drotator/test.html",
+              "target": "_blank"
+            }
+          ]
         }
       ],
       "hidden": null
@@ -17935,6 +17990,31 @@
           "id": 9772363439000
         }
       ]
+    },
+    {
+      "type": {
+        "id": 2,
+        "name": "panorama"
+      },
+      "name": "Showroom Example",
+      "asset": {
+        "type": {
+          "id": 1,
+          "name": "image"
+        },
+        "folder": "/uploads/",
+        "file": "670894415861100_Unreal Engine Demo 360 2022.05.16 - 10.57.31.33.jpg",
+        "id": 670894428913200
+      },
+      "orientation": {
+        "latitude": -4.1,
+        "longitude": 324.09999999999997
+      },
+      "zoom": 75,
+      "id": 670905532231500,
+      "items": [],
+      "hidden": null,
+      "ar": null
     }
   ],
   "menu": [
@@ -18009,11 +18089,18 @@
       "order": 70
     },
     {
+      "id": 670967439645600,
+      "parentId": 513759169265300,
+      "viewId": 670905532231500,
+      "name": "Showroom Example",
+      "order": 80
+    },
+    {
       "id": 156494751468000,
       "parentId": 513759169265300,
       "viewId": null,
       "name": "Render",
-      "order": 80
+      "order": 90
     },
     {
       "id": 4241133105700,
@@ -18048,35 +18135,35 @@
       "parentId": 513759169265300,
       "viewId": 176009598834200,
       "name": "Moco Museum",
-      "order": 90
+      "order": 100
     },
     {
       "id": 176160231382200,
       "parentId": 513759169265300,
       "viewId": 176070093236500,
       "name": "Uffizi",
-      "order": 100
+      "order": 110
     },
     {
       "id": 1374974181091900,
       "parentId": 513759169265300,
       "viewId": 1374946040706500,
       "name": "Kitchen Grid",
-      "order": 110
+      "order": 120
     },
     {
       "id": 258315435693300,
       "parentId": 513759169265300,
       "viewId": 252081188512900,
       "name": "Gallery 3D",
-      "order": 120
+      "order": 130
     },
     {
       "id": 684130060180899,
       "parentId": 513759169265300,
       "viewId": 683154982977400,
       "name": "Websolute",
-      "order": 130
+      "order": 140
     },
     {
       "id": 513846642724000,
@@ -18505,6 +18592,7 @@
       "originalItems": []
     }
   ],
+  "paths": [],
   "assets": [
     {
       "type": {
@@ -23258,6 +23346,15 @@
       "chromaKeyColor": null,
       "autoplay": false,
       "loop": false
+    },
+    {
+      "type": {
+        "id": 1,
+        "name": "image"
+      },
+      "folder": "/uploads/",
+      "file": "670894415861100_Unreal Engine Demo 360 2022.05.16 - 10.57.31.33.jpg",
+      "id": 670894428913200
     }
   ],
   "users": [
