@@ -76,10 +76,10 @@
         }
       },
       "orientation": {
-        "latitude": 10.799999999999999,
-        "longitude": 292.2
+        "latitude": 11.5,
+        "longitude": 283.7
       },
-      "zoom": 55,
+      "zoom": 34.930768,
       "id": 235997239459900,
       "items": [
         {
@@ -101,6 +101,46 @@
           "links": [],
           "position": null,
           "rotation": null
+        },
+        {
+          "type": {
+            "id": 1,
+            "name": "nav"
+          },
+          "title": "Informazioni",
+          "abstract": "pin informativo per informazioni aggiuntive",
+          "viewId": 235997239459900,
+          "hook": null,
+          "hookExtra": null,
+          "keepOrientation": false,
+          "important": false,
+          "transparent": false,
+          "position": [
+            -38.55000110656842,
+            -1.5373548457620865,
+            92.25797501984196
+          ],
+          "rotation": [
+            -2.80629039096977,
+            0.4161849621510018,
+            3.0016402589478766,
+            "XYZ"
+          ],
+          "scale": [
+            20,
+            5,
+            1
+          ],
+          "asset": null,
+          "link": null,
+          "id": 237907493538200,
+          "links": [
+            {
+              "title": "WEB SITE",
+              "href": "https://www.copangroup.com/",
+              "target": "_blank"
+            }
+          ]
         }
       ],
       "hidden": null,
