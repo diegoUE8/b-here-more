@@ -61,7 +61,7 @@
           "name": "image"
         },
         "folder": "/uploads/",
-        "file": "236167106228500_AdobeStock_410699925.jpeg",
+        "file": "239461597155400_dressroom.jpeg",
         "id": 235989468495300,
         "locale": {
           "en": {
@@ -70,16 +70,16 @@
               "name": "image"
             },
             "folder": "/uploads/",
-            "file": "236167106228500_AdobeStock_410699925.jpeg",
+            "file": "239461597155400_dressroom.jpeg",
             "id": 235989468495300
           }
         }
       },
       "orientation": {
-        "latitude": 11.5,
-        "longitude": 283.7
+        "latitude": 10.8,
+        "longitude": 270.3
       },
-      "zoom": 34.930768,
+      "zoom": 27.887583,
       "id": 235997239459900,
       "items": [
         {
@@ -101,46 +101,6 @@
           "links": [],
           "position": null,
           "rotation": null
-        },
-        {
-          "type": {
-            "id": 1,
-            "name": "nav"
-          },
-          "title": "Informazioni",
-          "abstract": "pin informativo per informazioni aggiuntive",
-          "viewId": 235997239459900,
-          "hook": null,
-          "hookExtra": null,
-          "keepOrientation": false,
-          "important": false,
-          "transparent": false,
-          "position": [
-            -38.55000110656842,
-            -1.5373548457620865,
-            92.25797501984196
-          ],
-          "rotation": [
-            -2.80629039096977,
-            0.4161849621510018,
-            3.0016402589478766,
-            "XYZ"
-          ],
-          "scale": [
-            20,
-            5,
-            1
-          ],
-          "asset": null,
-          "link": null,
-          "id": 237907493538200,
-          "links": [
-            {
-              "title": "WEB SITE",
-              "href": "https://www.copangroup.com/",
-              "target": "_blank"
-            }
-          ]
         }
       ],
       "hidden": null,
@@ -185,7 +145,7 @@
         "name": "image"
       },
       "folder": "/uploads/",
-      "file": "236167106228500_AdobeStock_410699925.jpeg",
+      "file": "239461597155400_dressroom.jpeg",
       "id": 235989468495300,
       "locale": {
         "en": {
@@ -194,7 +154,7 @@
             "name": "image"
           },
           "folder": "/uploads/",
-          "file": "236167106228500_AdobeStock_410699925.jpeg",
+          "file": "239461597155400_dressroom.jpeg",
           "id": 235989468495300
         }
       }
