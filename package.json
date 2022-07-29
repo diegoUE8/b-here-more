@@ -2,7 +2,7 @@
   "author": "Luca Zampetti <lzampetti@gmail.com>",
   "name": "b-here-demo",
   "description": "b-here-more",
-  "version": "1.0.14",
+  "version": "1.0.18",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "test": "node test/selenium-test.js"
   },
   "dependencies": {
-    "beta-bhere-development": "1.0.14"
+    "beta-bhere-development": "1.0.18"
   },
   "devDependencies": {
     "gulpfile-config": "1.0.0-alpha.18",
