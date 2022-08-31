@@ -76,10 +76,10 @@
         }
       },
       "orientation": {
-        "latitude": 10.8,
-        "longitude": 270.3
+        "latitude": 9.5,
+        "longitude": 105.19999999999999
       },
-      "zoom": 27.887583,
+      "zoom": 42.160101,
       "id": 235997239459900,
       "items": [
         {
@@ -101,6 +101,50 @@
           "links": [],
           "position": null,
           "rotation": null
+        },
+        {
+          "type": {
+            "id": 1,
+            "name": "nav"
+          },
+          "title": "INFO",
+          "abstract": "Full laboratory Automation (FLA) combines into an integrated system the complete automatization of preanalytics, analytics, and data interpretation, with minimal human intervention, offering many advantages. Automation performs repetitive tasks rapidly and accurately, reducing process errors for unparalleled precision and reproducibility.  Also, machines never sleep, enabling laboratories to switch to a 24/7 schedule.",
+          "viewId": 235997239459900,
+          "hook": null,
+          "hookExtra": null,
+          "keepOrientation": false,
+          "important": false,
+          "transparent": false,
+          "position": [
+            57.80075569070922,
+            -31.056441089443897,
+            -75.46237544923196
+          ],
+          "rotation": [
+            -0.3022477628710981,
+            -0.5728461529825918,
+            -0.1674221308775381,
+            "XYZ"
+          ],
+          "scale": [
+            20,
+            5,
+            1
+          ],
+          "asset": null,
+          "link": {
+            "title": "WEB SITE",
+            "href": "https://www.copangroup.com/",
+            "target": "_blank"
+          },
+          "id": 164013573078600,
+          "links": [
+            {
+              "title": "WEB SITE",
+              "href": "https://www.copangroup.com/",
+              "target": "_blank"
+            }
+          ]
         }
       ],
       "hidden": null,
