@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/diegoUE8/b-here-more.git#more"
+    "url": "git://github.com/diegoUE8/b-here-more.git"
   },
   "engines": {
     "npm": ">=6.14.6 <=8.x.x",
