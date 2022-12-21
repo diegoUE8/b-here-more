@@ -26,6 +26,7 @@ options = Object.assign(options, {
 		loading: 'Loading',
 		update: 'Save',
 		upload: 'Upload',
+		copyright: '@copy Websolute Spa',
 		privacy_policy: 'Privacy Policy',
 		terms_of_service: 'Terms of Service',
 		access_login: 'Login.',
@@ -40,6 +41,10 @@ options = Object.assign(options, {
 		access_guided_tour_request: 'Fill in the fields and request the guided tour.',
 		access_has_meeting_id: 'do you already have a meeting id?',
 		access_guided_tour_cta: 'Access the guided tour',
+		access_sso_login_info: 'login to join the tour',
+		access_sso_login_cta: 'SSO Login',
+		access_sso_register_info: 'not registered yet? register',
+		access_sso_register_cta: 'SSO Register',
 		access_first_name: 'Name',
 		access_last_name: 'Surname',
 		access_email: 'Email',
@@ -269,11 +274,5 @@ options = Object.assign(options, {
 		{ type: 'checkbox', name: 'privacy', label: 'access_privacy_disclaimer', required: true, test: true },
 	],
 });
-
-var target = document.createElement('div');
-target.setAttribute('b-here', '');
-document.body.appendChild(target);
-
-var bhere = new BHere(target, options);
 
 </script>
