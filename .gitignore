@@ -1,5 +1,14 @@
-*.crt
-*.key
+node_modules_master
+
+ca.crt
+ca.key
+src/js/loaders
+src/js/webxr
+test
+# dist
+dist/css/lib
+dist/js/lib
+docs/dist
 
 # Logs
 logs
@@ -58,7 +67,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+# .env
 
 # next.js build output
 .next
