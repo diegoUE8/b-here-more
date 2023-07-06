@@ -1,5 +1,5 @@
 /**
- * @license beta-bhere-development v1.0.28
+ * @license beta-bhere-development v1.0.25
  * (c) 2023 Luca Zampetti <lzampetti@gmail.com>
  * License: MIT
  */
@@ -461,9 +461,6 @@ const CHUNK_EMBED =
     // streamer: "1080p_2", // 1920 x 1080 x 30
     // streamer: "1080p_3", // 1920 x 1080 x 30
     // streamer: "1080p_5", // 1920 x 1080 x 60
-    // attendee: "720p_2", // 1920 x 1080 x 30
-    attendee: "1080p_2",
-    // 1920 x 1080 x 30
     // publisher: "720p_2", // 1920 x 1080 x 30
     publisher: "1080p_2",
     // 1920 x 1080 x 30
@@ -594,9 +591,6 @@ const CHUNK_EMBED =
     // streamer: "1080p_2", // 1920 x 1080 x 30
     // streamer: "1080p_3", // 1920 x 1080 x 30
     // streamer: "1080p_5", // 1920 x 1080 x 60
-    // attendee: "720p_2", // 1920 x 1080 x 30
-    attendee: "1080p_2",
-    // 1920 x 1080 x 30
     // publisher: "720p_2", // 1920 x 1080 x 30
     publisher: "1080p_2",
     // 1920 x 1080 x 30
@@ -4731,20 +4725,11 @@ export const StreamQualities = [{
 */
 
 function getStreamQuality(state) {
-  let profile = environment.profiles.streamer;
-
-  switch (state.role) {
-    case RoleType.Publisher:
-    case RoleType.SmartDevice:
-      profile = environment.profiles.publisher || environment.profiles.streamer;
-      break;
-
-    case RoleType.Attendee:
-      profile = environment.profiles.attendee || environment.profiles.streamer;
-      break;
+  if (state.role === RoleType.Publisher || state.role === RoleType.SmartDevice) {
+    return StreamQualities.find(x => x.profile === environment.profiles.publisher);
+  } else {
+    return StreamQualities.find(x => x.profile === environment.profiles.streamer);
   }
-
-  return StreamQualities.find(x => x.profile === profile);
 }
 /*
 export function getStreamQuality(state) {
@@ -6155,33 +6140,6 @@ class StreamService {
     }
   }
 
-  static get attendeeStreamId() {
-    const streams = this.remotes.slice();
-    const local = this.local;
-
-    if (local) {
-      streams.unshift(local);
-    }
-
-    const attendeeStream = streams.find(x => x.clientInfo && x.clientInfo.role === RoleType.Attendee && x.clientInfo.uid === x.getId());
-
-    if (attendeeStream) {
-      return attendeeStream.getId();
-    }
-
-    return null;
-  }
-
-  static getAttendeeStreamId$() {
-    const attendeeStreamId = this.attendeeStreamId;
-
-    if (attendeeStreamId) {
-      return rxjs.of(attendeeStreamId);
-    } else {
-      return this.streams$.pipe(operators.map(() => this.attendeeStreamId), operators.filter(x => x));
-    }
-  }
-
   static getRemoteById(streamId) {
     // console.log('StreamService.getRemoteById', streamId);
     const remotes = StreamService.remotes;
@@ -6461,10 +6419,7 @@ class AgoraService extends Emittable$1 {
 
   membersCount$(channelId) {
     const messageClient = this.messageClient;
-    return rxjs.interval(2000).pipe(operators.switchMap(() => rxjs.from(messageClient.getChannelMemberCount([channelId]))), operators.map(counters => counters[channelId]), operators.catchError(error => {
-      console.log('AgoraRTM', 'AgoraService.membersCount$.error', error);
-      return rxjs.of(0);
-    }), operators.distinctUntilChanged());
+    return rxjs.interval(2000).pipe(operators.switchMap(() => rxjs.from(messageClient.getChannelMemberCount([channelId]))), operators.map(counters => counters[channelId]), operators.distinctUntilChanged());
   }
 
   observeMemberCount() {
@@ -6506,10 +6461,10 @@ class AgoraService extends Emittable$1 {
       }
 
       client.init(environment.appKey, () => {
-        console.log('AgoraRTC client initialized');
+        // console.log('AgoraRTC client initialized');
         next();
       }, error => {
-        console.log('AgoraRTC client init failed', error);
+        // console.log('AgoraRTC client init failed', error);
         this.client = null;
       });
     };
@@ -6556,8 +6511,7 @@ class AgoraService extends Emittable$1 {
 
       messageClient.setParameters({
         logFilter: AgoraRTM.LOG_FILTER_OFF
-      });
-      console.log('AgoraRTM', 'client initialized'); // messageClient.on('ConnectionStateChanged', console.warn);
+      }); // messageClient.on('ConnectionStateChanged', console.warn);
       // messageClient.on('MessageFromPeer', console.log);
     }
   }
@@ -6594,12 +6548,8 @@ class AgoraService extends Emittable$1 {
   join(token, channelNameLink) {
     this.channel = null;
     const client = this.client;
-    const clientId = SessionStorageService.get('bHereClientId') || AgoraService.getUniqueUserId();
-    console.log('AgoraService.join', {
-      token,
-      channelNameLink,
-      clientId
-    });
+    const clientId = SessionStorageService.get('bHereClientId') || AgoraService.getUniqueUserId(); // console.log('AgoraService.join', { token, channelNameLink, clientId });
+
     client.join(token, channelNameLink, clientId, uid => {
       // console.log('AgoraService.join', uid);
       StateService.patchState({
@@ -6642,12 +6592,11 @@ class AgoraService extends Emittable$1 {
     let channel;
     return new Promise((resolve, reject) => {
       const messageClient = this.messageClient;
-      console.log('AgoraRTM', 'AgoraService.joinMessageChannel', messageClient);
       messageClient.login({
         token: token,
         uid: uid.toString()
       }).then(() => {
-        console.log('AgoraRTM', 'AgoraService.joinMessageChannel.login.success');
+        // console.log('AgoraService.messageClient.login.success');
         channel = messageClient.createChannel(StateService.state.channelNameLink);
         return channel.join();
       }).then(() => {
@@ -6656,7 +6605,6 @@ class AgoraService extends Emittable$1 {
         this.emit('channel', channel); // console.log('AgoraService.joinMessageChannel.success');
 
         resolve(uid);
-        console.log('AgoraRTM', 'AgoraService.joinMessageChannel.join.success');
         channel.getMembers().then(members => {
           members = members.filter(x => x !== uid.toString());
           const message = {
@@ -6664,13 +6612,8 @@ class AgoraService extends Emittable$1 {
             members
           };
           this.broadcastMessage(message);
-          console.log('AgoraRTM', 'AgoraService.joinMessageChannel.members', message);
         });
-        console.log('AgoraRTM', 'AgoraService.joinMessageChannel', StateService.state.channelNameLink);
-      }).catch(error => {
-        console.log('AgoraRTM', 'AgoraService.joinMessageChannel.error', error);
-        reject(error);
-      });
+      }).catch(reject);
     });
   }
 
@@ -6910,7 +6853,6 @@ class AgoraService extends Emittable$1 {
 
   publishLocalStream() {
     const client = this.client;
-    console.log('AgoraService.publishLocalStream');
     const local = StreamService.local; // publish local stream
 
     client.publish(local, error => {
@@ -7196,15 +7138,14 @@ class AgoraService extends Emittable$1 {
   }
 
   sendRemoteRequestPeerInfo(remoteId) {
-    console.log('AgoraService.sendRemoteRequestPeerInfo', remoteId);
+    // console.log('AgoraService.sendRemoteRequestPeerInfo', remoteId);
     return new Promise((resolve, reject) => {
       this.sendMessage({
         type: MessageType.RequestPeerInfo,
         messageId: this.newMessageId(),
         remoteId: remoteId
       }).then(message => {
-        console.log('AgoraService.sendRemoteRequestPeerInfo.response', message);
-
+        // console.log('AgoraService.sendRemoteRequestPeerInfo.response', message);
         if (message.type === MessageType.RequestPeerInfoResult) {
           // !!! RequestPeerInfoResult Publisher
           if (message.clientInfo.role === RoleType.Publisher) {
@@ -7363,7 +7304,6 @@ class AgoraService extends Emittable$1 {
     return new Promise((resolve, reject) => {
       if (StateService.state.connected) {
         message.clientId = StateService.state.uid;
-        console.log('AgoraService.sendMessage');
 
         switch (message.type) {
           case MessageType.ControlInfo:
@@ -7388,8 +7328,6 @@ class AgoraService extends Emittable$1 {
 
 
         const send = (message, channel) => {
-          console.log('AgoraService.sendMessage', message);
-
           try {
             const text = JSON.stringify(message);
 
@@ -7425,20 +7363,15 @@ class AgoraService extends Emittable$1 {
               send(message, channel);
             });
           } catch (error) {
-            console.log('AgoraService.sendMessage.error', error);
             reject(error);
           }
         }
-      } else {
-        console.log('AgoraService.sendMessage.error', 'not connected'); // console.log('StateService.state.connected', StateService.state.connected)
-        // reject();
       }
     });
   }
 
   addOrUpdateChannelAttributes(messages) {
     const messageClient = this.messageClient;
-    console.log('AgoraRTM', 'AgoraService.addOrUpdateChannelAttributes', messageClient);
 
     if (messageClient) {
       const attributes = {};
@@ -7452,12 +7385,7 @@ class AgoraService extends Emittable$1 {
         const promise = messageClient.addOrUpdateChannelAttributes(StateService.state.channelNameLink, attributes, {
           enableNotificationToChannelMembers: false
         });
-        return rxjs.from(promise).pipe(tap(_ => {
-          console.log('AgoraRTM', 'AgoraService.addOrUpdateChannelAttributes', _);
-        }), operators.catchError(error => {
-          console.log('AgoraRTM', 'AgoraService.addOrUpdateChannelAttributes.error', error);
-          return rxjs.of(null);
-        }));
+        return rxjs.from(promise);
       } else {
         return rxjs.of(null);
       }
@@ -7468,7 +7396,6 @@ class AgoraService extends Emittable$1 {
 
   getChannelAttributes() {
     const messageClient = this.messageClient;
-    console.log('AgoraRTM', 'AgoraService.getChannelAttributes', messageClient);
 
     if (messageClient) {
       const promise = messageClient.getChannelAttributes(StateService.state.channelNameLink);
@@ -7480,12 +7407,9 @@ class AgoraService extends Emittable$1 {
           const message = JSON.parse(attribute.value); // console.log('AgoraService.getChannelAttributes.attribute', attribute, message);
 
           return message;
-        });
-        console.log('AgoraRTM', 'AgoraService.getChannelAttributes', messages);
+        }); // console.log('AgoraService.getChannelAttributes', messages);
+
         return messages;
-      }), operators.catchError(error => {
-        console.log('AgoraRTM', 'AgoraService.getChannelAttributes.error', error);
-        return rxjs.of([]);
       }));
     } else {
       return rxjs.of(null);
@@ -7579,7 +7503,7 @@ class AgoraService extends Emittable$1 {
     // console.log('AgoraService.onMessage', data.text, uid, StateService.state.uid);
     // discard message delivered by current state uid;
     if (uid !== StateService.state.uid) {
-      console.log('AgoraService.onMessage', data.text, uid);
+      // console.log('AgoraService.onMessage', data.text);
       const message = JSON.parse(data.text);
 
       if (message.messageId && this.has(`message-${message.messageId}`)) {
@@ -7614,7 +7538,7 @@ class AgoraService extends Emittable$1 {
   }
 
   onStreamPublished(event) {
-    console.log('AgoraService.onStreamPublished', event);
+    // console.log('AgoraService.onStreamPublished');
     const local = StreamService.local;
     local.clientInfo = {
       role: StateService.state.role,
@@ -7631,16 +7555,13 @@ class AgoraService extends Emittable$1 {
   }
 
   onStreamAdded(event) {
-    console.log('AgoraService.onStreamAdded', event);
     const client = this.client;
     const stream = event.stream;
 
     if (!stream) {
-      console.log('AgoraService.onStreamAdded.error', 'stream is undefined');
       return;
     }
 
-    console.log('AgoraService.onStreamAdded', event.stream.getId());
     const streamId = stream.getId(); // console.log('AgoraService.onStreamAdded', streamId, StateService.state.uid, StateService.state.screenUid);
 
     if (streamId !== StateService.state.uid && streamId !== StateService.state.screenUid) {
@@ -7662,12 +7583,12 @@ class AgoraService extends Emittable$1 {
   }
 
   onStreamSubscribed(event) {
-    console.log('AgoraService.onStreamSubscribed', event.stream.getId());
+    // console.log('AgoraService.onStreamSubscribed', event.stream.getId());
     this.remoteAdd(event.stream);
   }
 
   onPeerConnect(event) {
-    console.log('AgoraService.onPeerConnect', event);
+    // console.log('AgoraService.onPeerConnect', event);
     this.peerAdd(event);
   }
 
@@ -7716,10 +7637,10 @@ class AgoraService extends Emittable$1 {
   }
 
   peerAdd(event) {
+    // console.log('AgoraService.peerAdd', event);
     const peer = {
       uid: event.uid
     };
-    console.log('AgoraService.peerAdd', peer);
     const peers = StreamService.peers;
     peers.push(peer);
     StreamService.peers = peers;
@@ -7740,7 +7661,7 @@ class AgoraService extends Emittable$1 {
   }
 
   remoteAdd(stream) {
-    console.log('AgoraService.remoteAdd', stream);
+    // console.log('AgoraService.remoteAdd', stream);
     StreamService.remoteAdd(stream);
     this.broadcastEvent(new AgoraRemoteEvent({
       stream
@@ -8152,7 +8073,6 @@ class AgoraService extends Emittable$1 {
               }).catch(() => {});
             });
           }).catch(error => {
-            console.log('checkRtmConnection.error', error);
             reject(error);
           }).finally(() => {
             // clear
@@ -8212,20 +8132,6 @@ class AgoraService extends Emittable$1 {
           reject('Media device not available');
         }
       }
-    });
-  }
-
-  static fixLegacy() {
-    const prefixes = ['moz', 'webkit'];
-    prefixes.forEach(prefix => {
-      console.log('AgoraService', `fixing legacy ${prefix}RTC`);
-      Object.getOwnPropertyNames(window).filter(key => key.indexOf('RTC') === 0).map(key => {
-        const legacyKey = `${prefix}${key}`;
-
-        if (typeof window[key] !== 'undefined' && typeof window[legacyKey] === 'undefined') {
-          window[legacyKey] = window[key]; // console.log(key, '->', legacyKey);
-        }
-      });
     });
   }
 
@@ -11545,7 +11451,6 @@ function AssetGroupTypeInit() {
 }
 const STREAM_TYPES = [AssetType.PublisherStream.name, AssetType.AttendeeStream.name, AssetType.PublisherScreen.name, AssetType.AttendeeScreen.name, AssetType.SmartDeviceStream.name];
 function assetIsStream(asset) {
-  // console.log('assetIsStream', asset.type.name, STREAM_TYPES);
   return asset && STREAM_TYPES.indexOf(asset.type.name) !== -1;
 }
 function assetTypeById(id) {
@@ -15473,16 +15378,10 @@ class ImageService {
 
     if (!asset) {
       return;
-    } // console.log('PanoramaLoader.load', asset.type.name, AssetType);
-
+    }
 
     if (asset.type.name === AssetType.PublisherStream.name) {
       return this.loadPublisherStreamBackground(renderer, callback);
-    } else if (asset.type.name === AssetType.AttendeeStream.name) {
-      return this.loadAttendeeStreamBackground(renderer, callback);
-      /*} else if (assetIsStream(asset)) {
-      	return this.loadStreamBackground(renderer, callback, asset);
-      	*/
     } else if (asset.file.indexOf('.mp4') !== -1 || asset.file.indexOf('.webm') !== -1) {
       return this.loadVideoBackground(environment.getPath(asset.folder), asset.file, renderer, callback);
     } else if (asset.file.indexOf('.m3u8') !== -1) {
@@ -15738,106 +15637,6 @@ class ImageService {
     };
 
     StreamService.getPublisherStreamId$().pipe(operators.first()).subscribe(publisherStreamId => onPublisherStreamId(publisherStreamId));
-  }
-
-  static loadAttendeeStreamBackground(renderer, callback) {
-    const onAttendeeStreamId = attendeeStreamId => {
-      const video = document.querySelector(`#stream-${attendeeStreamId} video`);
-
-      if (!video) {
-        return;
-      }
-
-      const onPlaying = () => {
-        const texture = this.texture = new THREE.VideoTexture(video);
-        texture.minFilter = THREE.LinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        texture.mapping = THREE.UVMapping; // texture.format = THREE.RGBAFormat;
-        // texture.encoding = THREE.LinearEncoding;
-
-        texture.needsUpdate = true;
-
-        if (typeof callback === 'function') {
-          callback(texture);
-        }
-      };
-
-      video.crossOrigin = 'anonymous';
-
-      if (video.readyState >= video.HAVE_FUTURE_DATA) {
-        onPlaying();
-      } else {
-        video.oncanplay = () => {
-          onPlaying();
-        };
-      }
-    };
-
-    StreamService.getAttendeeStreamId$().pipe(operators.first()).subscribe(attendeeStreamId => onAttendeeStreamId(attendeeStreamId));
-  }
-
-  static loadStreamBackground(renderer, callback, asset) {
-    const onStreamId = streamId => {
-      const video = document.querySelector(`#stream-${streamId} video`);
-
-      if (!video) {
-        return;
-      }
-
-      const onPlaying = () => {
-        const texture = this.texture = new THREE.VideoTexture(video);
-        texture.minFilter = THREE.LinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        texture.mapping = THREE.UVMapping; // texture.format = THREE.RGBAFormat;
-        // texture.encoding = THREE.LinearEncoding;
-
-        texture.needsUpdate = true;
-
-        if (typeof callback === 'function') {
-          callback(texture);
-        }
-      };
-
-      video.crossOrigin = 'anonymous';
-
-      if (video.readyState >= video.HAVE_FUTURE_DATA) {
-        onPlaying();
-      } else {
-        video.oncanplay = () => {
-          onPlaying();
-        };
-      }
-    };
-
-    PanoramaLoader.getStreamId$(asset).pipe(operators.takeUntil(MediaLoader.events$.pipe(operators.filter(event => event instanceof MediaLoaderDisposeEvent)))).subscribe(streamId => {
-      onStreamId(streamId);
-    });
-  }
-
-  static getStreamId$(asset) {
-    const assetType = asset.type;
-    return StreamService.streams$.pipe(operators.map(streams => {
-      // console.log('streams', streams);
-      let stream;
-      let i = 0;
-      const matchType = MediaMesh.getTypeMatcher(assetType);
-      streams.forEach(x => {
-        // console.log('streams', matchType(x), x, asset);
-        if (matchType(x)) {
-          if (i === asset.index) {
-            stream = x;
-          }
-
-          i++;
-        }
-      });
-
-      if (stream) {
-        return stream.getId();
-      } else {
-        return null;
-      }
-    }));
   }
 
 }// import * as THREE from 'three';
@@ -38177,8 +37976,7 @@ ModelTextComponent.meta = {
     host: WorldComponent
   },
   inputs: ['item']
-};AgoraService.fixLegacy();
-class AppModule extends rxcomp.Module {}
+};class AppModule extends rxcomp.Module {}
 AppModule.meta = {
   imports: [rxcomp.CoreModule, rxcompForm.FormModule, EditorModule],
   declarations: [AccessCodeComponent, AccessComponent, AgoraChatComponent, AgoraChatEmojiComponent, AgoraCheckComponent, AgoraChecklistComponent, AgoraComponent, AgoraConfigureFirewallModalComponent, AgoraDeviceComponent, AgoraDevicePreviewComponent, AgoraLinkComponent, AgoraLoginComponent, AgoraNameComponent, AgoraStreamComponent, AssetPipe, ControlAssetComponent, ControlAssetsComponent, ControlCheckboxComponent, ControlCustomSelectComponent, ControlLinkComponent, ControlLocalizedAssetComponent, ControlMenuComponent, ControlModelComponent, ControlNumberComponent, ControlPasswordComponent, ControlRequestModalComponent, ControlsComponent, ControlSelectComponent, ControlTextareaComponent, ControlTextComponent, ControlVectorComponent, DisabledDirective, DropDirective, DropdownDirective, DropdownItemDirective, EnvPipe, ErrorsComponent, FlagPipe, GenericComponent, GenericModalComponent, HlsDirective, HtmlPipe, IframeModalComponent, IdDirective, InputValueComponent, LabelPipe, LanguageComponent, LayoutComponent, LazyDirective, MediaPlayerComponent, MessagePipe, ModalComponent, ModalOutletComponent, ModelBannerComponent, ModelComponent, ModelCurvedPlaneComponent, ModelDebugComponent, ModelGridComponent, ModelMenuComponent, ModelModelComponent, ModelNavComponent, ModelPanelComponent, ModelPictureComponent, ModelPlaneComponent, ModelProgressComponent, ModelRoomComponent, ModelTextComponent, RoutePipe, SupportRequestModalComponent, SvgIconStructure, TestComponent, TitleDirective, TryInARComponent, TryInARModalComponent, UploadItemComponent, ValueDirective, VirtualStructure, WorldComponent, RouterOutletStructure, RouterLinkDirective],
