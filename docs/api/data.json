@@ -18390,74 +18390,67 @@
       "order": 50
     },
     {
-      "id": 62370351208800,
-      "parentId": 514006762002499,
-      "viewId": 60124349530900,
-      "name": "Shark",
-      "order": 60
-    },
-    {
       "id": 981617375290000,
       "parentId": 514006762002499,
       "viewId": 979780057814600,
       "name": "Cerniera",
-      "order": 70
+      "order": 60
     },
     {
       "id": 981627543856300,
       "parentId": 514006762002499,
       "viewId": 979852780240700,
       "name": "Dress 1",
-      "order": 80
+      "order": 70
     },
     {
       "id": 26053541161400,
       "parentId": 514006762002499,
       "viewId": 24644443223500,
       "name": "Dress 2",
-      "order": 90
+      "order": 80
     },
     {
       "id": 26054505700100,
       "parentId": 514006762002499,
       "viewId": 25021543650100,
       "name": "Dress 3",
-      "order": 100
+      "order": 90
     },
     {
       "id": 26070761398700,
       "parentId": 514006762002499,
       "viewId": 24965105453700,
       "name": "Bag",
-      "order": 110
+      "order": 100
     },
     {
       "id": 463509993642000,
       "parentId": 514006762002499,
       "viewId": 463408766195400,
       "name": "Sink",
-      "order": 120
+      "order": 110
     },
     {
       "id": 26055642896400,
       "parentId": 514006762002499,
       "viewId": 24867987536000,
       "name": "Shoe",
-      "order": 130
+      "order": 120
     },
     {
       "id": 12386988973600,
       "parentId": 514006762002499,
       "viewId": 11910622211800,
       "name": "Shoe 2",
-      "order": 140
+      "order": 130
     },
     {
       "id": 12387701943300,
       "parentId": 514006762002499,
       "viewId": 11979542098600,
       "name": "Shoe 3",
-      "order": 150
+      "order": 140
     }
   ],
   "navmaps": [
