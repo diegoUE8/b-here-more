@@ -1,13 +1,13 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta charset="utf-8"><base href="/b-here-more/"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="Content-Language" content="it"><meta name="robots" content="noindex,nofollow"><title>Websolute B-Here</title><meta name="description" content="Websolute B-Here demo."><meta name="apple-mobile-web-app-title" content="Websolute B-Here"><meta name="application-name" content="Websolute B-Here"><link rel="shortcut icon" href="/b-here-more/img/favicon.ico"><!--
-	<link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
-	<link rel="manifest" href="/img/icons/site.webmanifest">
-	<link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#19255a">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-config" content="/img/icons/browserconfig.xml">
-	<meta name="theme-color" content="#ffffff">
-	--><link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;800" rel="stylesheet"><!-- &display=swap --><link rel="stylesheet" href="/b-here-more/css/bhere.min.css"><!-- start css --><!-- end css --></head><body><script>window.STATIC = true;</script><!-- start main --><!-- start css-vars.html--><style>.b-here {
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta charset="utf-8"><base href="/"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="Content-Language" content="it"><meta name="robots" content="noindex,nofollow"><title>Websolute B-Here</title><meta name="description" content="Websolute B-Here demo."><meta name="apple-mobile-web-app-title" content="Websolute B-Here"><meta name="application-name" content="Websolute B-Here"><link rel="shortcut icon" href="/docs/img/favicon.ico"><!--
+		<link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
+		<link rel="manifest" href="/img/icons/site.webmanifest">
+		<link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#19255a">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-config" content="/img/icons/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
+		--><!-- <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;700;900" rel="stylesheet"> --><link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet" crossorigin="anonymous"><link rel="stylesheet" href="/docs/css/vendors.min.css"><link rel="stylesheet" href="/docs/css/main.min.css"><!-- start css --><!-- end css --></head><body><script>window.STATIC = true;</script><!-- start main --><!-- start css-vars.html--><style>.b-here {
 	/* --font-primary: GT Walsheim, Maven Pro, Arial, sans-serif; */
 	--font-primary: GT Walsheim, GT Walsheim, GT Walsheim;
 	--background: #ffffffb6;
@@ -30,120 +30,164 @@
 	--foreground-primary-dimmed: rgba(98, 0, 255, 0.5);
 	--border: #101010;
 	--shadow: rgba(122, 86, 151, 0.65);
-}</style><!-- end css-vars.html--><!-- end main --><!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es5%2CString.prototype.includes%2CObject.values%2CArray.prototype.fill%2CArray.prototype.find%2CArray.from%2Cfetch%2CObject.assign%2CURLSearchParams%2CElement.prototype.classList%2CNode.prototype.contains%2CNodeList.prototype.forEach%2CCustomEvent%2CAudioContext"></script> --><script src="/b-here-more/js/bhere.min.js"></script><!-- start js --><!-- start options.html--><script>var options = {
-	appKey: '865af1430a854af5b01733ff9b725a2b',
-	channelName: 'BHere',
-	logo: '/b-here-more/img/logo.png',
-	background: {
-		// image: '/b-here-more/img/background.jpg',
-		video: '/b-here-more/img/background.mp4',
-	},
-	selfServiceAudio: null, // '/b-here-more/audio/self-service.mp3',
-	colors: {
-		menuBackground: '#000000',
-		menuForeground: '#ffffff',
-		menuOverBackground: '#7140eb',
-		menuOverForeground: '#ffffff',
-		menuBackBackground: '#7140eb',
-		menuBackForeground: '#000000',
-		menuBackOverBackground: '#7140eb',
-		menuBackOverForeground: '#ffffff',
-	},
-	editor: {
-		disabledViewTypes: ['waiting-room'],
-		disabledViewItemTypes: ['texture'],
-	},
-	assets: '/b-here-more/',
-	dist: '/b-here-more/',
-	workers: {
-		image: '/b-here-more/js/workers/image.service.worker.js',
-		prefetch: '/b-here-more/js/workers/prefetch.service.worker.js',
-	},
-	textures: {
-		envMap: 'textures/envMap/studio_small_03_2k.hdr',
-		grid: 'textures/grid/grid.jpg',
-	},
-	githubDocs: 'https://raw.githubusercontent.com/diegoUE8/b-here-more/copan/docs/',
-	template: {
-		email: {
-			supportRequest: '/email/support-request.html',
-		}
-	},
-	flags: {
-		production: false,
-		useProxy: false,
-		useToken: false,
-		useExtendedUserInfo: true,
-		useEncryptedUrl: false,
-		gdprRoutes: true,
-		selfService: true,
-		guidedTourRequest: true,
-		editor: true,
-		editorAssetScreen: true,
-		menu: true,
-		menuEmbed: true,
-		navmaps: true,
-		screenShare: true,
-		chat: true,
-		ar: true,
-		like: true,
-		hideNavInfo: true,
-		useIframe: true,
-		attendee: true,
-		streamer: true,
-		viewer: true,
-		smartDevice: true,
-		selfServiceProposition: false,
-		navInfoAnimated: false,
-		navInfoImportantAnimated: true,
-		navMoveAnimated: false,
-		navMoveImportantAnimated: false,
-		navPointAnimated: false,
-		navPointImportantAnimated: false,
-		navTitleAnimated: false,
-		navTitleImportantAnimated: false,
-		navTransparentAnimated: true,
-		navTransparentImportantAnimated: true,
-		useTextureEnvironment: true,
-		usePaths: true,
-		antialias: true,
-		alpha: false,
-		premultipliedAlpha: false,
-	},
-	navs: {
-		iconMinScale: 1.2,
-		iconMaxScale: 1.6,
-	},
-	profiles: {
-		// streamer: "480p_1", // 640 x 480 x 15
-		streamer: "480p_2", // 640 x 480 x 30
-		// streamer: "480p_3", // 480 x 480 x 15
-		// streamer: "480p_4", // 640 x 480 x 30
-		// streamer: "480p_6", // 480 x 480 x 30
-		// streamer: "480p_8", // 848, 480 x 15
-		// streamer: "480p_9", // 848, 480 x 30
-		// streamer: "480p_10", // 640 x 480 x 10
-		// streamer: "720p_1", // 1280 x 720 x 15
-		// streamer: "720p_2", // 1280 x 720 x 30
-		// streamer: "720p_3", // 1280 x 720 x 30
-		// streamer: "720p_5", // 960 x 720 x 15
-		// streamer: "720p_6", // 960 x 720 x 30
-		// streamer: "1080p_1", // 1920 x 1080 x 15
-		// streamer: "1080p_2", // 1920 x 1080 x 30
-		// streamer: "1080p_3", // 1920 x 1080 x 30
-		// streamer: "1080p_5", // 1920 x 1080 x 60
+}</style><!-- end css-vars.html--><!-- start options.html--><script>var options = {
+		appKey: '8b0cae93d47a44e48e97e7fd0404be4e',
+		channelName: 'BHere',
+		webhook: {
+			uris: [
+				'internal',
+				'https://webhook.site/246bff9c-732d-427b-99b8-52c6c3746907',
+			],
+			methods: {
+				nav: [
+					'ToggleWishlist',
+				],
+			},
+		},
+		logo: null,
+		background: {
+			image: 'img/background.jpg',
+			video: 'img/background.mp4',
+		},
+		selfServiceAudio: null, // 'audio/self-service.mp3',
+		colors: {
+			menuBackground: '#000000',
+			menuForeground: '#ffffff',
+			menuOverBackground: '#7140eb',
+			menuOverForeground: '#ffffff',
+			menuBackBackground: '#7140eb',
+			menuBackForeground: '#000000',
+			menuBackOverBackground: '#7140eb',
+			menuBackOverForeground: '#ffffff',
+		},
+		editor: {
+			disabledViewTypes: ['waiting-room'],
+			disabledViewItemTypes: ['texture'],
+		},
+		assets: '/docs/',
+		dist: '/dist/',
+		workers: {
+			image: '/docs/js/workers/image.service.worker.js',
+			prefetch: '/docs/js/workers/prefetch.service.worker.js',
+		},
+		textures: {
+			envMap: 'textures/envMap/studio.hdr',
+			grid: 'textures/grid/grid.jpg',
+		},
+		toneMappingExposure: 1.5,
+		githubDocs: 'https://raw.githubusercontent.com/diegoUE8/b-here-more/main/docs/',
+		template: {
+			email: {
+				supportRequest: '/email/support-request.html',
+			}
+		},
+		pathMapper: {
+			ssoLogin: (data) => {
+				/*
+				const roles = {
+					'Agenzia Certificata': 1,
+					'Centro Assistenza Autorizzato (Contratto)': 2,
+					'Dealer': 3,
+					'Progettista Certificato': 4,
+					'Distributore': 5,
+					'Installatore Certificato': 6,
+					'Ferroli partner': 7,
+					'Ferroli partner + ass': 8,
+					'Dipendenti': 9,
+					'Centro Assistenza Certificato': 10,
+					'Agenzia Autorizzata (Contratto)': 11,
+				};
+				*/
+				const pathId = [1, 2, 3, 9, 11, 'Dealer'].indexOf(data.role) !== -1 ? 2 : 1;
+				console.log('environment.pathMapper.ssoLogin', pathId, data);
+				return pathId;
+			},
+			selfService: (data) => {
+				const pathId = 1;
+				console.log('environment.pathMapper.selfService', pathId, data);
+				return pathId;
+			},
+		},
+		flags: {
+			production: false,
+			useProxy: true,
+			useToken: false,
+			useExtendedUserInfo: true,
+			useEncryptedUrl: false,
+			gdprRoutes: true,
+			selfService: true,
+			guidedTourRequest: true,
+			guidedTourAccess: true,
+			ssoLogin: false,
+			ssoRegister: false,
+			editor: true,
+			editorAssetScreen: true,
+			menu: true,
+			menuEmbed: true,
+			navmaps: true,
+			screenShare: true,
+			chat: true,
+			ar: true,
+			like: true,
+			hideNavInfo: true,
+			useIframe: true,
+			attendee: true,
+			streamer: true,
+			viewer: true,
+			smartDevice: true,
+			selfServiceProposition: false,
+			navInfoAnimated: false,
+			navInfoImportantAnimated: false,
+			navMoveAnimated: true,
+			navMoveImportantAnimated: false,
+			navPointAnimated: false,
+			navPointImportantAnimated: false,
+			navTitleAnimated: false,
+			navTitleImportantAnimated: false,
+			navTransparentAnimated: true,
+			navTransparentImportantAnimated: true,
+			useTextureEnvironment: true,
+			usePaths: false,
+			antialias: true,
+			alpha: false,
+			premultipliedAlpha: false,
+		},
+		navs: {
+			iconMinScale: 1.2,
+			iconMaxScale: 1.6,
+		},
+		profiles: {
+			// streamer: "480p_1", // 640 x 480 x 15
+			streamer: "480p_2", // 640 x 480 x 30
+			// streamer: "480p_3", // 480 x 480 x 15
+			// streamer: "480p_4", // 640 x 480 x 30
+			// streamer: "480p_6", // 480 x 480 x 30
+			// streamer: "480p_8", // 848, 480 x 15
+			// streamer: "480p_9", // 848, 480 x 30
+			// streamer: "480p_10", // 640 x 480 x 10
+			// streamer: "720p_1", // 1280 x 720 x 15
+			// streamer: "720p_2", // 1280 x 720 x 30
+			// streamer: "720p_3", // 1280 x 720 x 30
+			// streamer: "720p_5", // 960 x 720 x 15
+			// streamer: "720p_6", // 960 x 720 x 30
+			// streamer: "1080p_1", // 1920 x 1080 x 15
+			// streamer: "1080p_2", // 1920 x 1080 x 30
+			// streamer: "1080p_3", // 1920 x 1080 x 30
+			// streamer: "1080p_5", // 1920 x 1080 x 60
 
-		// publisher: "720p_2", // 1920 x 1080 x 30
-		publisher: "1080p_2", // 1920 x 1080 x 30
+			// attendee: "720p_2", // 1920 x 1080 x 30
+			attendee: "1080p_2", // 1920 x 1080 x 30
+			// publisher: "720p_2", // 1920 x 1080 x 30
+			publisher: "1080p_2", // 1920 x 1080 x 30
 
-		// screen: "480p_1", // 640 × 480 x 5
-		// screen: "480p_2", // 640 × 480 x 30
-		// screen: "720p_1", // 1280 × 720 x 5
-		// screen: "720p_2", // 1280 × 720 x 30
-		// screen: "1080p_1", // 1920 × 1080 x 5
-		screen: "1080p_2", // 1920 × 1080 30
-	},
-};</script><!-- end options.html--><!-- start it.html--><script>var roles = [
+			// screen: "480p_1", // 640 × 480 x 5
+			// screen: "480p_2", // 640 × 480 x 30
+			// screen: "720p_1", // 1280 × 720 x 5
+			// screen: "720p_2", // 1280 × 720 x 30
+			// screen: "1080p_1", // 1920 × 1080 x 5
+			screen: "1080p_2", // 1920 × 1080 30
+		},
+	};</script><!-- end options.html--><!-- start it.html--><script>var roles = [
 	{ id: 1, name: 'Show room' },
 	{ id: 2, name: 'Architetto' },
 	{ id: 3, name: 'Interior designer' },
@@ -170,6 +214,7 @@ options = Object.assign(options, {
 		loading: 'Caricamento',
 		update: 'Salva',
 		upload: 'Carica',
+		copyright: '@copy Websolute Spa',
 		privacy_policy: 'Informativa sulla Privacy',
 		terms_of_service: 'Termini di utilizzo',
 		access_login: 'Login.',
@@ -184,6 +229,10 @@ options = Object.assign(options, {
 		access_guided_tour_request: 'Compila i campi e richiedi il tour guidato.',
 		access_has_meeting_id: 'possiedi già un meeting id?',
 		access_guided_tour_cta: 'Accedi al tour guidato',
+		access_sso_login_info: 'effettua il login per entrare nel tour',
+		access_sso_login_cta: 'SSO Login',
+		access_sso_register_info: 'non sei ancora registrato? registrati',
+		access_sso_register_cta: 'SSO Registrazione',
 		access_first_name: 'Nome',
 		access_last_name: 'Cognome',
 		access_email: 'Email',
@@ -410,10 +459,4 @@ options = Object.assign(options, {
 		{ type: 'custom-select', name: 'role', label: 'access_role', required: true, options: roles, test: roles[0].id },
 		{ type: 'checkbox', name: 'privacy', label: 'access_privacy_disclaimer', required: true, test: true },
 	],
-});
-
-var target = document.createElement('div');
-target.setAttribute('b-here', '');
-document.body.appendChild(target);
-
-var bhere = new BHere(target, options);</script><!-- end it.html--><!-- end js --></body></html>
+});</script><!-- end it.html--><script>window.bhere = options;</script><div class="b-here hidden" b-here-component></div><!-- end main --><!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es5%2CString.prototype.includes%2CObject.values%2CArray.prototype.fill%2CArray.prototype.find%2CArray.from%2Cfetch%2CObject.assign%2CURLSearchParams%2CElement.prototype.classList%2CNode.prototype.contains%2CNodeList.prototype.forEach%2CCustomEvent%2CAudioContext"></script> --><script src="/docs/js/vendors.min.js"></script><script src="/docs/js/main.js"></script><!-- start js --><!-- end js --></body></html>

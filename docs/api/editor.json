@@ -46,7 +46,41 @@
         "longitude": 180.2
       },
       "zoom": 75,
-      "items": [],
+      "items": [
+        {
+          "type": {
+            "id": 1,
+            "name": "nav"
+          },
+          "title": "TEST",
+          "abstract": null,
+          "viewId": 235997239459900,
+          "hook": null,
+          "hookExtra": null,
+          "keepOrientation": false,
+          "important": false,
+          "transparent": false,
+          "position": [
+            -99.96411856629427,
+            -2.6721084552317858,
+            -0.18664315508034715
+          ],
+          "rotation": [
+            -1.5010609436534064,
+            1.5440069334809197,
+            1.5010359937322484,
+            "XYZ"
+          ],
+          "scale": [
+            20,
+            5,
+            1
+          ],
+          "asset": null,
+          "link": null,
+          "id": 6421886670500
+        }
+      ],
       "hidden": null
     },
     {

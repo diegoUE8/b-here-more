@@ -1,3 +1,7 @@
-const { serve } = require('beta-bhere-development/server/main.js');
+require('dotenv').config();
 
-const app = serve({ dirname: __dirname, baseHref: '/b-here-more/' });
+const { serve } = require('./server/main.js');
+
+const app = serve({ dirname: __dirname, baseHref: process.env.BASE_HREF });
+
+module.exports = app;
